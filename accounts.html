@@ -9,15 +9,28 @@
   <script type="text/javascript" src="javascript.js"></script>
 </head>
 <body>
-  <h1>OOP in JavaScript</h1>
-  <h2 id="winning-message"></h2>
 
   <div class="row">
-    <div class="col-md-1"> </div>
-    <div class="box col-md-3" onclick="clickBox('One')"> </div>
-    <div class="col-md-1"> </div>
-    <div class="box col-md-3" onclick="clickBox('Two')"> </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <h1>Create Account</h1>
+      <div>
+        First Name <input id="firstName">
+      </div>
+      <div>
+        Last Name <input id="lastName">
+      </div>
+      <div>
+        Opening Balance<input id="openingBalance">
+      </div>
+      <button onclick="createAccount()">Create Account</button>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+      <div id=accounts>
+        
+      </div>
+    </div>
   </div>
 </body>
 </html>
-
