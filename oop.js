@@ -1,13 +1,15 @@
-var counter = 0;
+var clickBoxOne = (function() {
+  var counter = 0;
+  return function() {
+    counter++;
+    return console.log("Box One clicked " + counter + " times.");
+  }
+})();
 
-function clickBoxOne() {
-  counter++;
-  console.log("Box One clicked " + counter + " times.")
-}
-
-var counter = 0;
-
-function clickBoxTwo() {
-  counter++;
-  console.log("Box One clicked " + counter + " times.")
-}
+var clickBoxTwo = (function() {
+  var counter = 0;
+  return function() {
+    counter++;
+    return console.log("Box Two clicked " + counter + " times.");
+  }
+})();
