@@ -18,29 +18,74 @@ var clickBoxTwo = (function() {
 
 
 
-function Person(name, nationality, age) {
-  this.name = name;
-  this.nationality = nationality;
-  this.age = age;
-}
 
-Person.prototype.secondNationality = function(secondNationality) {
-  this.secondNationality = secondNationality;
-};
+/////////////////////////////////////////////////// EC5 Prototypical Inheritance /////////////////////////////
 
-Person.prototype.addYearToAge = function() {
-  this.age = this.age + 1;
-};
 
-var john = new Person("John", "American", 30);
-console.log(john);
-john.secondNationality("German");
-console.log(john);
-var sally = new Person("Sally", "Bolivian", 43)
-console.log(sally);
-sally.addYearToAge();
-console.log(sally);
+// function Mammal(age) {
+//   this.hair = true;
+//   this.order = 'primate';
+//   this.age = age;
+// }
 
+// function Person(name, nationality, age) {
+//   Mammal.call(this, age)
+//   this.name = name;
+//   this.nationality = nationality;
+//   this.info = function() {
+//     return "Name: " + this.name + " Nationality: " + this.nationality +  " Age: " + this.age;
+//   }
+// }
+
+// Person.prototype = new Mammal();
+
+////////////////////////////////////////////////// EC6 Syntax ////////////////////////////////////////////////
+
+// class Mammal {
+//   constructor(age) {
+//     this.hair = true;
+//     this.order = 'primate';
+//     this.age = age;
+//   }
+// }
+
+
+// class Person extends Mammal {  
+//   constructor(name, nationality, age) {
+//     super(age);
+//     this.name = name;
+//     this.nationality = nationality;
+//   }
+
+//   info() {
+//     return "Name: " + this.name + " Nationality: " + this.nationality +  " Age: " + this.age;
+//   }
+// }
+
+// Person.prototype.secondNationality = function(secondNationality) {
+//   this.secondNationality = secondNationality;
+// };
+
+// Person.prototype.addYearToAge = function() {
+//   this.age++;
+// };
+
+////////////////////////////////////////////////// Object 'Instances' ////////////////////////////////////////////////
+
+
+// var john = new Person("John", "American", 30);
+// console.log(john);
+// john.secondNationality("German");
+// console.log(john);
+// var sally = new Person("Sally", "Bolivian", 43)
+// console.log(sally);
+// sally.addYearToAge();
+// console.log(sally);
+// console.log(sally.order); //// inheritance example
+// console.log(sally.info()); //// inheritance example
+
+
+////////////////////////////////////////////////// Account Example ////////////////////////////////////////////////
 
 
 var accounts = [];
@@ -57,27 +102,39 @@ function createAccount() {
   openingBalance.value = "";
 }
 
-// function addAccountToPage(account) {
-//   var div = document.createElement("div");
-//   div.innerHTML = 'Account Holder: ' + account.firstName + ' ' + account.lastName;
-//   document.getElementById("accounts").appendChild(div);
-//   var button = document.createElement("BUTTON");
-//   var buttonText = document.createTextNode("CLICK ME");
-//   button.setAttribute("onclick", "findToCloseAccount(this)");
-//   button.appendChild(buttonText);
-//   div.appendChild(button);
+
+/////////////////////////////////////////////////// EC5 Prototypical Inheritance /////////////////////////////
+
+
+// function Person(firstName, lastName) {
+//   this.firstName = firstName;
+//   this.lastName = lastName;
 // }
 
-
-// function findToCloseAccount(account) {
-//   account.closeAccount();
+// function Account(firstName, lastName, openingBalance) {
+//   Person.call(this, firstName, lastName);
+//   this.balance = openingBalance;
+//   this.status = 'active';
 // }
 
-function Account(firstName, lastName, openingBalance) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.balance = openingBalance;
-  this.status = 'active';
+// Account.prototype = new Person;
+
+
+/////////////////////////////////////////////////// EC6 ///////////////////////////////////////////////////////
+
+class Person {
+  constructor(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+}
+
+class Account extends Person {  
+  constructor(firstName, lastName, openingBalance) {
+    super(firstName, lastName);
+    this.balance = openingBalance;
+    this.status = 'active';
+  }
 }
 
 Account.prototype.closeAccount = function() {
@@ -85,9 +142,6 @@ Account.prototype.closeAccount = function() {
   this.status = "closed";
   return "Remaining balance will be mailed to you in two weeks";
 }
-
-
-
 
 window.accounts = accounts;
 
