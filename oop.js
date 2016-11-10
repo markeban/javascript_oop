@@ -18,14 +18,27 @@ var clickBoxTwo = (function() {
 
 
 
-function Person(name, nationality, secondNationality) {
+function Person(name, nationality, age) {
   this.name = name;
   this.nationality = nationality;
-  this.secondNationality = secondNationality;
+  this.age = age;
 }
 
-var john = new Person("John", "American", "None");
-console.log(john);
+Person.prototype.secondNationality = function(secondNationality) {
+  this.secondNationality = secondNationality;
+};
 
+Person.prototype.addYearToAge = function() {
+  this.age = this.age + 1;
+};
+
+var john = new Person("John", "American", 30);
+console.log(john);
+john.secondNationality("German");
+console.log(john);
+var sally = new Person("Sally", "Bolivian", 43)
+console.log(sally);
+sally.addYearToAge();
+console.log(sally);
 
 
